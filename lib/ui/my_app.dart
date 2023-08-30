@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'pages/page1.dart';
+import 'pages/page2.dart';
+import 'pages/page3a.dart';
+import 'pages/page3b.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -26,7 +31,13 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
       themeMode: ThemeMode.light,
-      //todo: Implement name routing (initialRoute and getPages parameters)
+      initialRoute: "/page1",
+      routes: {
+        "/page1": (context) => const Page1(),
+        "/page2": (context) => Page2(),
+        "/page3a": (context) => const Page3A(),
+        "/page3b": (context) => Page3B(),
+      },
     );
   }
 }

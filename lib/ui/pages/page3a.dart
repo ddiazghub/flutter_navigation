@@ -9,7 +9,7 @@ class Page3A extends StatefulWidget {
 }
 
 class _Page3AState extends State<Page3A> {
-  final String? name = Get.parameters['name'];
+  final String? name = Get.arguments['name'];
 
   String currentSelection = 'Give me candy';
 
@@ -18,30 +18,31 @@ class _Page3AState extends State<Page3A> {
     return Scaffold(
       appBar: AppBar(title: Text('$name Option A'), key: const Key('appBar')),
       body: Center(
-          child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Botton Sheet modal.'),
-            const SizedBox(height: 20),
-            Text(currentSelection, key: const Key('currentSelection')),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Get.bottomSheet(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Botton Sheet modal.'),
+              const SizedBox(height: 20),
+              Text(currentSelection, key: const Key('currentSelection')),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () => Get.bottomSheet(
                   backgroundColor: Colors.white,
                   Wrap(
                     children: <Widget>[
                       ListTile(
-                          leading: const Icon(Icons.food_bank),
-                          title: const Text('I like candy'),
-                          key: const Key('likeCandyTile'),
-                          onTap: () {
-                            setState(() {
-                              currentSelection = 'Give me candy';
-                            });
-                            Get.back();
-                          }),
+                        leading: const Icon(Icons.food_bank),
+                        title: const Text('I like candy'),
+                        key: const Key('likeCandyTile'),
+                        onTap: () {
+                          setState(() {
+                            currentSelection = 'Give me candy';
+                          });
+                          Get.back();
+                        },
+                      ),
                       ListTile(
                         key: const Key('noCandyTile'),
                         leading: const Icon(Icons.close),
@@ -54,14 +55,16 @@ class _Page3AState extends State<Page3A> {
                         },
                       ),
                     ],
-                  )),
-              key: const Key('elevatedButton'),
-              child: const Text('Show Bottom Sheet modal'),
-            ),
-            const SizedBox(height: 20),
-          ],
+                  ),
+                ),
+                key: const Key('elevatedButton'),
+                child: const Text('Show Bottom Sheet modal'),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

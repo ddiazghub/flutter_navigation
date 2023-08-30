@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class Page2 extends StatelessWidget {
   Page2({super.key});
-  // Obtain the name parameter from the route
-  final String? name = 'some name';
+
+  final String? name = Get.arguments["name"];
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class Page2 extends StatelessWidget {
         title: Text('Welcome $name!'),
         actions: [
           IconButton(
-              //todo: Implement back navigation logic making sure to clean the navigation stack
-              onPressed: () => null,
-              icon: const Icon(Icons.logout))
+            onPressed: () => Get.back(),
+            icon: const Icon(Icons.logout),
+          )
         ],
       ),
       body: Center(
@@ -32,18 +32,24 @@ class Page2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  //todo: Implement navigation to page3a sending the name as a parameter
-                  onPressed: () => null,
+                  onPressed: () => Get.toNamed(
+                    "/page3a",
+                    arguments: {"name": name},
+                  ),
                   child: const Text(
                     'Option A',
                   ),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
-                    onPressed: () => Get.toNamed("/page3b/?name=$name"),
-                    child: const Text(
-                      'Option B',
-                    )),
+                  onPressed: () => Get.toNamed(
+                    "/page3b",
+                    arguments: {"name": name},
+                  ),
+                  child: const Text(
+                    'Option B',
+                  ),
+                ),
               ],
             ),
           ],
